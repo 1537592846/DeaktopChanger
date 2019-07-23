@@ -21,7 +21,8 @@ namespace DesktopChanger
                 images = Directory.GetFiles(path);
             }
             var rand = new Random();
-            var imageChosen = images[rand.Next()%images.Count()];
+            images = images.Where(x => !x.Contains("Used-")).ToArray();
+            string imageChosen = images[rand.Next()%images.Count()];
             Directory.Move(imageChosen, imageChosen.Insert(imageChosen.LastIndexOf("\\") + 1, "Used-"));
             imageChosen = imageChosen.Insert(imageChosen.LastIndexOf("\\") + 1, "Used-");
             key.SetValue("Wallpaper", imageChosen);
