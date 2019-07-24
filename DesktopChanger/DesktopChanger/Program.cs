@@ -9,7 +9,7 @@ namespace DesktopChanger
     {
         static void Main(string[] args)
         {
-            string path = Directory.GetCurrentDirectory() + "\\Images";
+            string path = @"C:\Specials\Exes\DesktopChanger\Images";
             RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",true);
             var images = Directory.GetFiles(path);
             if (images.Where(x => !x.Contains("Used-")).Count() == 0)
